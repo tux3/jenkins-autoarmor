@@ -42,11 +42,6 @@ int main(int argc, char* argv[])
         }
     }
 
-    if (!write_base_profile()) {
-        cout << "autoarmor-genprof: Failed to write base profile"<<endl;
-        return 1;
-    }
-
     if (!write_denyall_profile()) {
         cout << "autoarmor-genprof: Failed to write deny-all profile"<<endl;
         return 1;
@@ -141,23 +136,32 @@ bool write_denyall_profile()
     return write_profile(name, rules);
 }
 
-bool write_base_profile()
-{
-    string name = "autoarmor-base";
-    string rules =  "  #include <abstractions/base>\n"
-                    "  deny /etc/passwd r,\n" // Quiet deny for sanity-checking
-                    "  /tmp/hudson*.sh rix,\n"
-                    "  /{,s}bin/*      rix,\n"
-                    "  /usr/{,s}bin/*  rix,\n";
-    return write_profile(name, rules);
-}
-
 bool write_job_profile(string basename, string workspace_base)
 {
     string fullname = job_profile_prefix+basename;
-    string rules = "#include <tunables/global>\n"
+    string rules =  "#include <tunables/global>\n"
                     "profile "+fullname+" {\n"
-                    "  #include <autoarmor/autoarmor-base>\n"
+                    "  #include <abstractions/base>\n"
+                    "  #include <abstractions/consoles>\n"
+                    "  capability dac_override,\n"
+
+                    "  /tmp/** rw,\n"
+                    "  /tmp/hudson*.sh rix,\n"
+                    "  deny /tmp/hudson*.sh w,\n"
+
+                    "  /etc/** r,\n"
+                    "  deny /etc/passwd r,\n" // Quiet deny for sanity-checking
+
+                    "  /{,s}bin/*      rix,\n"
+                    "  /usr/{,s}bin/*  rix,\n"
+                    "  /usr/{,local/}lib/** rix,\n"
+
+                    "  /usr/share/** r,\n"
+                    "  /usr/{,local/}include/** r,\n"
+                    "  /usr/{,local/}include/ r,\n"
+                    "  "+workspace_base+'/'+basename+"/** rwkix,\n"
+                    "  "+workspace_base+'/'+basename+"/ r,\n"
+                    "  deny @{HOME}/.wget-hsts rw,\n"
                     "}\n";
 
     return write_profile(fullname, rules);

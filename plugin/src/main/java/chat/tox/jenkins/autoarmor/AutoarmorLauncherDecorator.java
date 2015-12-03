@@ -101,7 +101,7 @@ public class AutoarmorLauncherDecorator extends LauncherDecorator {
             throw new RuntimeException("Autoarmor: Failed to check AppArmor installation, cancelling build.");
         }
         
-        String workspaceRoot = node.getRootPath().getRemote();
+        String workspaceRoot = node.getRootPath().getRemote()+"/workspace";
         String projectName = build.getProject().getName();
         logger.println("Autoarmor: Loading AppArmor profile for workspace "+workspaceRoot+"/"+projectName);
         if (!aatools.loadProfile(workspaceRoot, projectName, enforceMode)) {
