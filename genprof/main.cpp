@@ -149,7 +149,10 @@ bool write_job_profile(string basename, string workspace_base)
                     "  /var/tmp/** rw,\n"
                     "  /var/tmp/ r,\n"
                     "  /tmp/hudson*.sh rix,\n"
+                    "  /tmp/protoc*.exe ix,\n"
                     "  deny /tmp/hudson*.sh w,\n"
+
+                    "  /proc/*/fd/ r,\n"
 
                     "  /etc/** r,\n"
                     "  deny /etc/passwd r,\n" // Quiet deny for sanity-checking
@@ -158,9 +161,20 @@ bool write_job_profile(string basename, string workspace_base)
                     "  /usr/{,s}bin/*  rix,\n"
                     "  /usr/{,local/}lib/** rix,\n"
 
+                    "  /usr/ r,\n"
+                    "  /lib/ r,\n"
+                    "  /bin/ r,\n"
+                    "  /usr/local/ r,\n"
+                    "  /usr/local/bin r,\n"
+                    "  /usr/local/lib/ r,\n"
+                    "  /usr/games/ r,\n"
+                    "  /usr/lib/ r,\n"
+                    "  /usr/bin/ r,\n"
                     "  /usr/share/** r,\n"
                     "  /usr/{,local/}include/** r,\n"
                     "  /usr/{,local/}include/ r,\n"
+                    "  /usr/i686-w64-mingw32/** r,\n"
+                    "  /usr/x86_64-w64-mingw32/** r,\n"
                     "  /run/resolvconf/** r,\n"
                     "  /opt/android-{ndk,sdk}/** rix,\n"
                     "  /usr/share/sbt-launcher-packaging/** rix,\n"
