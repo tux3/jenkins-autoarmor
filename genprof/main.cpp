@@ -146,6 +146,7 @@ bool write_job_profile(string basename, string workspace_base)
                     "  capability dac_override,\n"
 
                     "  /tmp/** rw,\n"
+                    "  /var/tmp/** rw,\n"
                     "  /tmp/hudson*.sh rix,\n"
                     "  deny /tmp/hudson*.sh w,\n"
 
@@ -161,7 +162,9 @@ bool write_job_profile(string basename, string workspace_base)
                     "  /usr/{,local/}include/ r,\n"
                     "  "+workspace_base+'/'+basename+"/** rwkix,\n"
                     "  "+workspace_base+'/'+basename+"/ r,\n"
+
                     "  deny @{HOME}/.wget-hsts rw,\n"
+                    "  @{HOME}/.rpmdb/** rw,\n"
                     "}\n";
 
     return write_profile(fullname, rules);
