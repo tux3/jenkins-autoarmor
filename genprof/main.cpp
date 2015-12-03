@@ -147,6 +147,7 @@ bool write_job_profile(string basename, string workspace_base)
 
                     "  /tmp/** rw,\n"
                     "  /var/tmp/** rw,\n"
+                    "  /var/tmp/ r,\n"
                     "  /tmp/hudson*.sh rix,\n"
                     "  deny /tmp/hudson*.sh w,\n"
 
@@ -160,11 +161,16 @@ bool write_job_profile(string basename, string workspace_base)
                     "  /usr/share/** r,\n"
                     "  /usr/{,local/}include/** r,\n"
                     "  /usr/{,local/}include/ r,\n"
+                    "  /run/resolvconf/** r,\n"
+                    "  /opt/android-{ndk,sdk}/** rix,\n"
+                    "  /usr/share/sbt-launcher-packaging/** rix,\n"
                     "  "+workspace_base+'/'+basename+"/** rwlkix,\n"
                     "  "+workspace_base+'/'+basename+"/ r,\n"
 
                     "  deny @{HOME}/.wget-hsts rw,\n"
                     "  @{HOME}/.rpmdb/** rw,\n"
+                    "  @{HOME}/cache/** rw,\n"
+                    "  @{HOME}/cache/ rw,\n"
                     "}\n";
 
     return write_profile(fullname, rules);
