@@ -8,7 +8,7 @@ Build the plugin using Maven, and install it on the Jenkins master.<br/>
 Then on all the Jenkins slaves that you want to protect:
 
 - Install AppArmor, 
-- Build and the autoarmor-genprof and autoarmor-wrapper using CMake
+- Build the autoarmor-genprof and autoarmor-wrapper helpers using CMake
 - Install both tools in the system PATH, and set the autoarmor-genprof helper setuid-root
 
 And finally in the Jenkins master's system configuration set the AppArmor mode to Enforce to start using AppArmor.
