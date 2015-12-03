@@ -40,6 +40,7 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import javax.servlet.ServletException;
 
 /**
  *
@@ -95,7 +96,7 @@ public class AutoarmorLauncherDecorator extends LauncherDecorator {
                 build.doStop();
                 throw new RuntimeException("Autoarmor: The AppArmor wrapper self-test failed, cancelling the build");
             }
-        } catch (Exception e) {
+        } catch (InterruptedException|IOException|ServletException e) {
             build.setResult(Result.FAILURE);
             throw new RuntimeException("Autoarmor: Failed to check AppArmor installation, cancelling build.");
         }
