@@ -151,6 +151,10 @@ bool write_job_profile(string basename, string workspace_base)
                     "  deny /tmp/hudson*.sh w,\n"
 
                     "  /proc/*/fd/ r,\n"
+                    "  /sys/devices/system/cpu/ r,\n"
+                    "  /proc/sys/net/ipv4/ip_local_port_range r,\n"
+                    "  /proc/*/net/if_inet6 r,\n"
+                    "  /proc/*/net/ipv6_route r,\n"
 
                     "  /etc/** r,\n"
                     "  deny /etc/passwd r,\n" // Quiet deny for sanity-checking
@@ -163,7 +167,7 @@ bool write_job_profile(string basename, string workspace_base)
                     "  /lib/ r,\n"
                     "  /bin/ r,\n"
                     "  /usr/local/ r,\n"
-                    "  /usr/local/bin r,\n"
+                    "  /usr/local/bin/ r,\n"
                     "  /usr/local/lib/ r,\n"
                     "  /usr/games/ r,\n"
                     "  /usr/lib/ r,\n"
