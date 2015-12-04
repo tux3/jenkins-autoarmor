@@ -145,11 +145,9 @@ bool write_job_profile(string basename, string workspace_base)
                     "  #include <abstractions/consoles>\n"
                     "  capability dac_override,\n"
 
-                    "  /tmp/** rw,\n"
+                    "  /tmp/** rwix,\n"
                     "  /var/tmp/** rw,\n"
                     "  /var/tmp/ r,\n"
-                    "  /tmp/hudson*.sh rix,\n"
-                    "  /tmp/protoc*.exe ix,\n"
                     "  deny /tmp/hudson*.sh w,\n"
 
                     "  /proc/*/fd/ r,\n"
