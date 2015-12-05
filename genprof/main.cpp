@@ -144,6 +144,8 @@ bool write_job_profile(string basename, string workspace_base)
                     "  #include <abstractions/base>\n"
                     "  #include <abstractions/consoles>\n"
                     "  capability dac_override,\n"
+                    "  capability setuid,\n"
+                    "  capability setgid,\n"
 
                     "  /tmp/** rwix,\n"
                     "  /var/tmp/** rw,\n"
@@ -157,7 +159,6 @@ bool write_job_profile(string basename, string workspace_base)
                     "  /proc/*/net/ipv6_route r,\n"
 
                     "  /etc/** r,\n"
-                    "  deny /etc/passwd r,\n" // Quiet deny for sanity-checking
 
                     "  /{,s}bin/*      rix,\n"
                     "  /usr/{,s}bin/*  rix,\n"
@@ -180,6 +181,7 @@ bool write_job_profile(string basename, string workspace_base)
                     "  /run/resolvconf/** r,\n"
                     "  /opt/android-{ndk,sdk}/** rix,\n"
                     "  /usr/share/sbt-launcher-packaging/** rix,\n"
+                    "  /usr/sbin/pbuilder pix,\n"
                     "  "+workspace_base+'/'+basename+"/** rwlkix,\n"
                     "  "+workspace_base+'/'+basename+"/ r,\n"
 
