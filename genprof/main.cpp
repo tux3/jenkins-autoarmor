@@ -184,6 +184,7 @@ bool write_job_profile(string basename, string workspace_base)
                     "  /usr/sbin/pbuilder pix,\n"
                     "  "+workspace_base+'/'+basename+"/** rwlkix,\n"
                     "  "+workspace_base+'/'+basename+"/ r,\n"
+                    "  /opt/pbuilder-local-repo/repo/** rw,\n"
 
                     "  deny @{HOME}/.wget-hsts rw,\n"
                     "  @{HOME}/.rpmdb/** rw,\n"
