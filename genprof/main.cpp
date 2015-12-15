@@ -190,6 +190,10 @@ bool write_job_profile(string basename, string workspace_base)
                     "  @{HOME}/.rpmdb/** rw,\n"
                     "  @{HOME}/cache/** rw,\n"
                     "  @{HOME}/cache/ rw,\n"
+                    "  @{HOME}/.sbt/boot/** rwlk,\n"
+                    "  @{HOME}/.sbt/boot/ rw,\n"
+                    "  @{HOME}/.ivy2/** rwlk,\n"
+                    "  @{HOME}/.ivy2/ rw,\n"
                     "}\n";
 
     return write_profile(fullname, rules);
