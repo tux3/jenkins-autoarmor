@@ -179,6 +179,7 @@ bool write_job_profile(string basename, string workspace_base)
                     "  /usr/i686-w64-mingw32/** r,\n"
                     "  /usr/x86_64-w64-mingw32/** r,\n"
                     "  /run/resolvconf/** r,\n"
+                    "  /opt/android-{ndk,sdk}/ rix,\n"
                     "  /opt/android-{ndk,sdk}/** rix,\n"
                     "  /usr/share/sbt-launcher-packaging/** rix,\n"
                     "  /usr/sbin/pbuilder pix,\n"
@@ -194,6 +195,8 @@ bool write_job_profile(string basename, string workspace_base)
                     "  @{HOME}/.sbt/boot/ rw,\n"
                     "  @{HOME}/.ivy2/** rwlk,\n"
                     "  @{HOME}/.ivy2/ rw,\n"
+                    "  @{HOME}/.gradle/** rwlk,\n"
+                    "  @{HOME}/.gradle/ rw,\n"
                     "  @{HOME}/.m2/** rwlk,\n"
                     "  @{HOME}/.m2/ rw,\n"
                     "}\n";
