@@ -147,6 +147,7 @@ bool write_job_profile(string basename, string workspace_base)
                     "  capability setuid,\n"
                     "  capability setgid,\n"
 
+                    "  /tmp/ r,\n"
                     "  /tmp/** rwix,\n"
                     "  /var/tmp/** rw,\n"
                     "  /var/tmp/ r,\n"
