@@ -198,6 +198,8 @@ bool write_job_profile(string basename, string workspace_base)
                     "  @{HOME}/.ivy2/ rw,\n"
                     "  @{HOME}/.gradle/** rwlk,\n"
                     "  @{HOME}/.gradle/ rw,\n"
+                    "  @{HOME}/.zinc/** rwlk,\n"
+                    "  @{HOME}/.zinc/ rw,\n"
                     "  @{HOME}/.m2/** rwlk,\n"
                     "  @{HOME}/.m2/ rw,\n"
                     "}\n";
