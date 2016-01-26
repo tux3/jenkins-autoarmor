@@ -201,6 +201,8 @@ bool write_job_profile(string basename, string workspace_base)
                     "  @{HOME}/.zinc/ rw,\n"
                     "  @{HOME}/.android/** rwlk,\n"
                     "  @{HOME}/.android/ rw,\n"
+                    "  @{HOME}/.gnupg/** rwlk,\n"
+                    "  @{HOME}/.gnupg/ rw,\n"
                     "  @{HOME}/.m2/** rwlk,\n"
                     "  @{HOME}/.m2/ rw,\n"
                     "}\n";
